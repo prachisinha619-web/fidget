@@ -58,7 +58,7 @@
             <script>
                 let sippner = document.getElementById('spinner');
                 let btn = document.getElementById('btn');
-                 const audio=new Audio('sound.mp3');
+                 const audio = new Audio('sound.mp3');
                 let status = false;
 
                 function control () {
@@ -70,12 +70,12 @@
                        
                         btn.innerHTML = "STOP";
                     }
+                        audio.pause();
                     else {
                         sippner.removeAttribute('class');
                         status = false;
                         btn.innerHTML = "START";
                     }
-                    audio.pause();
                 }
             </script>
         </div>
