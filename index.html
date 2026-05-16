@@ -70,11 +70,10 @@
                        
                         btn.innerHTML = "STOP";
                     }
-                    
+                      audio.pause();
                     else {
                         sippner.removeAttribute('class');
                         status = false;
-                        audio.pause();
                         btn.innerHTML = "START";
                     }
                     
