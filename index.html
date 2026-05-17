@@ -1,81 +1,90 @@
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Spinner</title>
-        <style>
-            *{
-                margin: 0px;
-                padding: 0px;
-                box-sizing: border-box;
-            }
-            body {
-                background-color:#0b1571;
-                height: 100vh;
-                width: 100vw;
-                display: grid;
-                place-content: center;
-            }
-            
-            div {
-                background-color: #fff;
-                padding: 50px;
-                width: 350px;
-                text-align: center;
-                border-radius: 20px;
-            }
-            @keyframes rotate {
-                0%{
-                    transform: rotate(0deg);
-                }
-                100%{
-                    transform: rotate(360deg);
-                }
-            }
-            img{
-                width: 250px;
-                margin-bottom: 50px;
-            }
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spinner</title>
 
-            .active {
-                animation: rotate 0.4s linear infinite;
-            }
-            button {
-                padding: 15px;
-                width: 60%;
-                background:green;
-                font-size: 20px;
-                color: white;
-            }
-            
-        </style>
-    </head>
-    </body>
-        <div>
-            <img id="spinner" src="fidget.jpeg" alt="">
-            <br>
-            <button id="btn" onclick="control()">START</button>
-           <script>
-    let spinner = document.getElementById('spinner');
-    let btn = document.getElementById('btn');
-    const audio = new Audio('fidgetsound.mp3');
-    let status = false;
-
-    function control() {
-        if (status == false) {
-            spinner.classList.add('active');
-            audio.play();
-            btn.innerHTML = "STOP";
-            status = true;
-        } else {
-            spinner.classList.remove('active');
-            audio.pause();
-            audio.currentTime = 0;
-            btn.innerHTML = "START";
-            status = false;
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
         }
+
+        body{
+            background:#0b1571;
+            height:100vh;
+            display:grid;
+            place-content:center;
+        }
+
+        div{
+            background:#fff;
+            padding:50px;
+            width:350px;
+            text-align:center;
+            border-radius:20px;
+        }
+
+        img{
+            width:250px;
+            margin-bottom:30px;
+        }
+
+        @keyframes rotate{
+            0%{transform:rotate(0deg);}
+            100%{transform:rotate(360deg);}
+        }
+
+        .active{
+            animation:rotate 0.4s linear infinite;
+        }
+
+        button{
+            padding:15px;
+            width:45%;
+            font-size:18px;
+            color:white;
+            border:none;
+            cursor:pointer;
+            margin:5px;
+            border-radius:10px;
+        }
+
+        .start{
+            background:green;
+        }
+
+        .stop{
+            background:red;
+        }
+    </style>
+</head>
+
+<body>
+
+<div>
+    <img id="spinner" src="fidget.jpeg" alt="">
+    <br>
+
+    <button class="start" onclick="startSpinner()">START</button>
+    <button class="stop" onclick="stopSpinner()">STOP</button>
+</div>
+
+<script>
+    let spinner = document.getElementById('spinner');
+    const audio = new Audio('fidgetsound.mp3');
+
+    function startSpinner(){
+        spinner.classList.add('active');
+        audio.play();
     }
-           </script> 
-        </div>
-    </html>
-        
-   
+
+    function stopSpinner(){
+        spinner.classList.remove('active');
+        audio.pause();
+        audio.currentTime = 0;
+    }
+</script>
+
+</body>
+</html>
